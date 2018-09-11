@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="ja">
+  <head>
+    <title>周知事項投入</title>
+  </head>
+  <body>
+    <section>
+      <h1>周知事項一覧</h1>
+      <form action="{{ url_for('del_entry') }}" method="POST">
+        <table>
+          {% for entry in entries %}
+          <tr>
+            <td><input type="checkbox" name="id" value="{{ entry.id | safe }}"/>
+            <td>{{ entry.title | safe }}</td>
+            <td>{{ entry.body | safe }}</td>
+            <td>{{ entry.deadline | safe }}</td>
+          </tr>
+          {% endfor %}
+        <table>
+        <input type="submit"/>
+      </form>
+    </section>
+    <hr/>
+    <section>
+      <h1>周知事項投入フォーム</h1>
+      <form action="{{ url_for('add_entry') }}" method="POST">
+        <label>タイトル</label><input type="text" name="title"/>
+        <br/>
+        <label>内容</labe><input type="text" name="body"/>
+        <br/>
+        <label>締め切り</label>
+        <input type="date" name="deadline"/>
+        <br/>
+        <input type="submit"/>
+      </form>
+    </section>
+  </body>
+</html>

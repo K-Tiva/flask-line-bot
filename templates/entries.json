@@ -1,0 +1,74 @@
+{
+  "type": "carousel",
+  "contents": [
+    {% for entry in entries %}
+    {
+      "type": "bubble",
+      "body": {
+        "type": "box",
+        "layout": "vertical",
+        "contents": [
+          {
+            "type": "text",
+            "text": "{{ entry.title }}",
+            "weight": "bold",
+            "size": "xl"
+          },
+          {
+            "type": "box",
+            "layout": "vertical",
+            "margin": "lg",
+            "spacing": "sm",
+            "contents": [
+              {
+                "type": "box",
+                "layout": "baseline",
+                "spacing": "sm",
+                "contents": [
+                  {
+                    "type": "text",
+                    "text": "期限",
+                    "color": "#aaaaaa",
+                    "size": "sm",
+                    "flex": 1
+                  },
+                  {
+                    "type": "text",
+                    "text": "{{ entry.deadline }}",
+                    "wrap": true,
+                    "color": "#666666",
+                    "size": "sm",
+                    "flex": 5
+                  }
+                ]
+              },
+              {
+                "type": "box",
+                "layout": "baseline",
+                "spacing": "sm",
+                "contents": [
+                  {
+                    "type": "text",
+                    "text": "内容",
+                    "color": "#aaaaaa",
+                    "size": "sm",
+                    "flex": 1
+                  },
+                  {
+                    "type": "text",
+                    "text": "{{ entry.body }}",
+                    "wrap": true,
+                    "color": "#666666",
+                    "size": "sm",
+                    "flex": 5
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    }{{ "," if not loop.last }}
+    {% endfor %}
+  ]
+}
